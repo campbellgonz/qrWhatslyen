@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyen Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilo general */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ajusta la altura del viewport */
+            background: linear-gradient(to bottom, #ccefff, #0066cc); /* degradado personalizado */
+        }
+
+        /* Contenedor principal para centrar contenido */
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff; /* Fondo blanco para el área del QR */
+            padding: 30px;
+            border-radius: 16px; /* Bordes redondeados */
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+            text-align: center;
+            width: 350px; /* Ancho del contenedor */
+        }
+
+        /* Estilo del logo */
+        .logo {
+            width: 140px; /* tamaño del logo */
+            margin-bottom: 20px; /* espacio entre el logo y el título */
+        }
+
+        /* Título estilizado */
+        .qr-container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+
+        /* Estilo del código QR */
+        canvas {
+            margin-bottom: 20px; /* Espacio debajo del código QR */
+        }
+
+        /* Estilo del enlace de WhatsApp */
+        p {
+            font-size: 18px;
+            color: #555; /* Color de texto suave */
+        }
+
+        p a {
+            color: #29abe2; /* Color del enlace */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            color: #216f96; /* Color de enlace al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <!-- Logo en la parte superior -->
+        <img src="logotipo-lyen-consulting.jpg" alt="Logo de Lyen Consulting" class="logo">
+        
+        <!-- Título estilizado -->
+        <h1>Escanea el código para enviar un mensaje por WhatsApp</h1>
+        
+        <!-- Código QR generado por JavaScript -->
+        <canvas id="qr-code"></canvas>
+
+        <!-- Enlace alternativo para abrir WhatsApp directamente -->
+       <!-- <p>Haz clic <a href="https://wa.me/+5215548832292?text=Hola%20bienvenid@%20a%20nuestra%20línea%20de%20atención.">aquí</a> si prefieres abrir WhatsApp directamente.</p>-->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        // Crear el código QR usando qrious
+        var qr = new QRious({
+            element: document.getElementById('qr-code'),
+            value: 'https://wa.me/+5215548832292?text=Hola%20bienvenid@%20a%20nuestra%20linea%20de%20atencion.', // Tu enlace de WhatsApp
+            size: 200, // Tamaño del QR
+        });
+        //Añadir el icono de Whatsapp en el centro del QR
+        var ctx = qr.canvas.getContext('2d');
+        var img = new Image();
+        img.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; // URL del ícono de WhatsApp
+        img.onload = function() {
+            ctx.drawImage(img, (qr.canvas.width - 60) / 2, (qr.canvas.height - 60) / 2, 60, 60); // Ajusta el tamaño y posición del ícono
+        };
+    </script>
+</body>
+</html>
